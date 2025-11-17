@@ -61,29 +61,29 @@
     
     <!-- Warnings/Alerts -->
     <div v-if="csvStore.stats.invalid > 0" class="mt-4">
-      <Alert variant="warning">
+      <UiAlert variant="warning">
         <div class="text-sm">
           <strong>{{ csvStore.stats.invalid }}</strong> rows have validation errors. 
           Please review and correct them before exporting.
         </div>
-      </Alert>
+      </UiAlert>
     </div>
     
     <div v-if="csvStore.stats.duplicates > 0" class="mt-4">
-      <Alert variant="info">
+      <UiAlert variant="info">
         <div class="text-sm">
           <strong>{{ csvStore.stats.duplicates }}</strong> duplicate phone numbers detected. 
           These will be marked in the table.
         </div>
-      </Alert>
+      </UiAlert>
     </div>
     
     <div v-if="csvStore.stats.valid === csvStore.stats.total" class="mt-4">
-      <Alert variant="success">
+      <UiAlert variant="success">
         <div class="text-sm">
           All records are valid! Your data is ready to export.
         </div>
-      </Alert>
+      </UiAlert>
     </div>
   </div>
 </template>

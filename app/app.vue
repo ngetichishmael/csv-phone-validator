@@ -29,10 +29,10 @@
       <!-- Data View (shown when data is loaded) -->
       <div v-else class="space-y-6">
         <!-- Stats Summary -->
-        <StatsSummary />
+        <DashboardStatsSummary />
         
         <!-- Data Table -->
-        <DataTable />
+        <TableDataTable />
         
         <!-- Export Controls -->
         <ExportControls />

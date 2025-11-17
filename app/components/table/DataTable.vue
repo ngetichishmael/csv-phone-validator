@@ -6,13 +6,13 @@
         <h2 class="text-lg font-semibold text-gray-900">
           Data Preview
         </h2>
-        <Badge variant="gray">
+        <UiBadge variant="gray">
           {{ csvStore.rows.length }} rows
-        </Badge>
+        </UiBadge>
       </div>
       
       <div class="flex items-center space-x-2">
-        <Button
+        <UiButton
           variant="outline"
           size="sm"
           @click="sortByPackage"
@@ -21,15 +21,15 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
           </svg>
           Sort by Bundle
-        </Button>
+        </UiButton>
         
-        <Button
+        <UiButton
           variant="outline"
           size="sm"
           @click="csvStore.clear()"
         >
           Clear Data
-        </Button>
+        </UiButton>
       </div>
     </div>
     
@@ -62,9 +62,9 @@
           >
             <!-- Status Column -->
             <td class="px-4 py-3 whitespace-nowrap">
-              <Badge :variant="getStatusVariant(row._status)">
+              <UiBadge :variant="getStatusVariant(row._status)">
                 {{ row._status }}
-              </Badge>
+              </UiBadge>
             </td>
             
             <!-- Data Columns -->

@@ -17,12 +17,7 @@ export default defineNuxtConfig({
   },
   
   // Auto-import components
-  components: [
-    {
-      path: '~/components',
-      pathPrefix: false,
-    }
-  ],
+  components: true,
   
   app: {
     head: {
