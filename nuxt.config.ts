@@ -6,10 +6,7 @@ export default defineNuxtConfig({
   // SPA mode - no SSR needed for this tool
   ssr: false,
   
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/eslint'],
   
   typescript: {
     strict: true,

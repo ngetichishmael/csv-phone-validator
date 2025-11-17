@@ -1,9 +1,3 @@
-<template>
-  <span :class="badgeClasses">
-    <slot />
-  </span>
-</template>
-
 <script setup lang="ts">
 interface Props {
   variant?: 'success' | 'error' | 'warning' | 'info' | 'gray'
@@ -35,4 +29,10 @@ const badgeClasses = computed(() => {
   return [base, variants[props.variant], sizes[props.size]].join(' ')
 })
 </script>
+
+<template>
+  <span :class="badgeClasses">
+    <slot />
+  </span>
+</template>
 

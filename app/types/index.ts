@@ -1,5 +1,5 @@
 export interface CsvRow {
-  [key: string]: any
+  [key: string]: string | number | ValidationError[] | undefined
   _id?: number
   _status?: 'pending' | 'valid' | 'invalid' | 'duplicate'
   _errors?: ValidationError[]

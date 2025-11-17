@@ -1,3 +1,13 @@
+<script setup lang="ts">
+const csvStore = useCsvStore()
+
+const formatFileSize = (bytes: number): string => {
+  if (bytes < 1024) return `${bytes} B`
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
+}
+</script>
+
 <template>
   <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-6">
     <h2 class="text-lg font-semibold text-gray-900 mb-4">Data Summary</h2>
@@ -87,14 +97,4 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const csvStore = useCsvStore()
-
-const formatFileSize = (bytes: number): string => {
-  if (bytes < 1024) return `${bytes} B`
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
-}
-</script>
 

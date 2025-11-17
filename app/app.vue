@@ -1,3 +1,11 @@
+<script setup lang="ts">
+const csvStore = useCsvStore()
+
+const handleFileUpload = (file: File) => {
+  console.log('File uploaded:', file.name)
+}
+</script>
+
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Header -->
@@ -49,11 +57,3 @@
     </footer>
   </div>
 </template>
-
-<script setup lang="ts">
-const csvStore = useCsvStore()
-
-const handleFileUpload = (file: File) => {
-  console.log('File uploaded:', file.name)
-}
-</script>

@@ -88,8 +88,8 @@ export const useCsvStore = defineStore('csv', {
           // Check for duplicates
           this.checkDuplicates()
         }
-      } catch (err: any) {
-        this.error = err.message || 'Failed to process file'
+      } catch (err: unknown) {
+        this.error = (err as Error).message || 'Failed to process file'
         throw err
       } finally {
         this.isLoading = false

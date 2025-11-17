@@ -1,3 +1,57 @@
+<script setup lang="ts">
+import type { CsvRow } from '~/types'
+
+const csvStore = useCsvStore()
+const editingRow = ref<number | null>(null)
+
+const getRowClass = (row: CsvRow) => {
+  switch (row._status) {
+    case 'valid':
+      return 'bg-green-50 hover:bg-green-100'
+    case 'invalid':
+      return 'bg-red-50 hover:bg-red-100'
+    case 'duplicate':
+      return 'bg-yellow-50 hover:bg-yellow-100'
+    default:
+      return 'hover:bg-gray-50'
+  }
+}
+
+const getStatusVariant = (status?: string) => {
+  switch (status) {
+    case 'valid':
+      return 'success'
+    case 'invalid':
+      return 'error'
+    case 'duplicate':
+      return 'warning'
+    default:
+      return 'gray'
+  }
+}
+
+const startEdit = (id: number) => {
+  editingRow.value = id
+}
+
+const saveEdit = (row: CsvRow) => {
+  editingRow.value = null
+  // The store will re-validate the row
+  csvStore.updateRow(row._id!, row)
+}
+
+const deleteRow = (id: number) => {
+  if (confirm('Are you sure you want to delete this row?')) {
+    csvStore.deleteRow(id)
+  }
+}
+
+const sortByPackage = () => {
+  // Sort by package column (descending - largest first)
+  csvStore.sortBy('package', false)
+}
+</script>
+
 <template>
   <div class="space-y-4">
     <!-- Table Controls -->
@@ -78,16 +132,16 @@
                 <input
                   v-if="editingRow === row._id"
                   v-model="row[header]"
-                  @blur="saveEdit(row)"
-                  @keyup.enter="saveEdit(row)"
                   class="w-full px-2 py-1 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   autofocus
-                />
+                  @blur="saveEdit(row)"
+                  @keyup.enter="saveEdit(row)"
+                >
                 <div
                   v-else
-                  @dblclick="startEdit(row._id!)"
                   class="cursor-pointer hover:bg-gray-50 px-2 py-1 rounded"
                   :class="{ 'text-red-600 font-medium': row._status === 'invalid' }"
+                  @dblclick="startEdit(row._id!)"
                 >
                   {{ row[header] }}
                   
@@ -123,9 +177,9 @@
             <!-- Actions Column -->
             <td class="px-4 py-3 whitespace-nowrap text-sm">
               <button
-                @click="deleteRow(row._id!)"
                 class="text-red-600 hover:text-red-800 transition-colors"
                 title="Delete row"
+                @click="deleteRow(row._id!)"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -143,58 +197,4 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { CsvRow } from '~/types'
-
-const csvStore = useCsvStore()
-const editingRow = ref<number | null>(null)
-
-const getRowClass = (row: CsvRow) => {
-  switch (row._status) {
-    case 'valid':
-      return 'bg-green-50 hover:bg-green-100'
-    case 'invalid':
-      return 'bg-red-50 hover:bg-red-100'
-    case 'duplicate':
-      return 'bg-yellow-50 hover:bg-yellow-100'
-    default:
-      return 'hover:bg-gray-50'
-  }
-}
-
-const getStatusVariant = (status?: string) => {
-  switch (status) {
-    case 'valid':
-      return 'success'
-    case 'invalid':
-      return 'error'
-    case 'duplicate':
-      return 'warning'
-    default:
-      return 'gray'
-  }
-}
-
-const startEdit = (id: number) => {
-  editingRow.value = id
-}
-
-const saveEdit = (row: CsvRow) => {
-  editingRow.value = null
-  // The store will re-validate the row
-  csvStore.updateRow(row._id!, row)
-}
-
-const deleteRow = (id: number) => {
-  if (confirm('Are you sure you want to delete this row?')) {
-    csvStore.deleteRow(id)
-  }
-}
-
-const sortByPackage = () => {
-  // Sort by package column (descending - largest first)
-  csvStore.sortBy('package', false)
-}
-</script>
 

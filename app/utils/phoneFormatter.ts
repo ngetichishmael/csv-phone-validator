@@ -4,6 +4,7 @@ import type { ValidationResult } from '~/types'
  * Standardizes phone numbers to +2547XXXXXXXX format
  * Handles various input formats and validates Kenya mobile numbers
  */
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class PhoneNumberFormatter {
   private static readonly KENYA_CODE = '254'
   private static readonly EXPECTED_LENGTH = 12 // +2547XXXXXXXX
@@ -113,7 +114,7 @@ export class PhoneNumberFormatter {
           // Convert to fixed notation without decimals
           return num.toFixed(0)
         }
-      } catch (e) {
+      } catch {
         // If parsing fails, return original
         return value
       }

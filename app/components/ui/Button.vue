@@ -1,14 +1,3 @@
-<template>
-  <button
-    :type="type"
-    :disabled="disabled"
-    :class="buttonClasses"
-    @click="$emit('click', $event)"
-  >
-    <slot />
-  </button>
-</template>
-
 <script setup lang="ts">
 interface Props {
   variant?: 'primary' | 'secondary' | 'danger' | 'success' | 'outline'
@@ -50,4 +39,15 @@ const buttonClasses = computed(() => {
   return [base, variants[props.variant], sizes[props.size], disabled].join(' ')
 })
 </script>
+
+<template>
+  <button
+    :type="type"
+    :disabled="disabled"
+    :class="buttonClasses"
+    @click="$emit('click', $event)"
+  >
+    <slot />
+  </button>
+</template>
 

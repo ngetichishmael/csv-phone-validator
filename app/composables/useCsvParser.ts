@@ -41,7 +41,7 @@ export const useCsvParser = () => {
             }
             
             // Process each row
-            const rows: CsvRow[] = results.data.map((row: any, index: number) => {
+            const rows: CsvRow[] = results.data.map((row: Record<string, unknown>, index: number) => {
               const phoneValue = row[phoneColumn]
               const validationResult = formatPhoneNumber(phoneValue)
               
