@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.2.0] - 2024-11-18
+## [1.2.0] - 2025-11-18
 
 ### ✨ Added
 
@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.1.0] - 2024-11-18
+## [1.1.0] - 2025-11-18
 
 ### ✨ Added
 
@@ -85,7 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.0] - 2024-11-17
+## [1.0.0] - 2025-11-17
 
 ### 🎉 Initial Release
 
@@ -366,13 +366,13 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 
 ## Git Commit History
 
-### 2024-11-18
+### 2025-11-18
 - `fb8eb6f` - chore: remove outdated documentation files
 - `49ab7ff` - docs: add application screenshots to README
 - `0d105ca` - docs: update GitHub username to ngetichishmael
 - `ab73476` - docs: add GitHub repository setup and documentation
 
-### 2024-11-17
+### 2025-11-17
 - `ee174d5` - feat: add ESLint with Vue block order enforcement
 - `1869791` - fix: update to Nuxt 4 app directory structure
 - `fc3ad33` - chore: add Bun lockfile for reproducible builds
