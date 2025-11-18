@@ -176,7 +176,28 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
 
 ## 📸 Screenshots
 
-> Add screenshots here after deployment
+### Landing Page
+Clean and intuitive upload interface with drag-and-drop support.
+
+![Landing Page](public/images/landing_page_before_upload.png)
+
+### During Upload
+Real-time processing with visual feedback.
+
+![Upload Progress](public/images/during_upload.png)
+
+### Results Dashboard
+Color-coded validation results with inline editing, statistics, and export controls.
+
+![Validation Results](public/images/result.png)
+
+**Features shown:**
+- ✅ Green rows: Valid phone numbers with telco identification
+- ❌ Red rows: Invalid entries with error messages
+- 🟡 Yellow rows: Duplicate phone numbers
+- 📊 Real-time statistics (Total, Valid, Invalid, Duplicates)
+- ✏️ Inline editing (double-click to fix)
+- 📥 Export controls with preview
 
 ## 🎯 Use Cases
 
