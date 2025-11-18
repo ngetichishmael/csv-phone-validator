@@ -38,7 +38,7 @@ A production-ready web application that validates, cleans, and formats CSV data 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/csv-phone-validator.git
+git clone https://github.com/ngetichishmael/csv-phone-validator.git
 cd csv-phone-validator
 
 # Install dependencies
@@ -204,7 +204,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Ish**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@ngetichishmael](https://github.com/ngetichishmael)
 - Built for Peak Hackathon 2025
 
 ## 🙏 Acknowledgments

@@ -45,7 +45,7 @@ Feature suggestions are welcome! Please:
 
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/csv-phone-validator.git
+git clone https://github.com/ngetichishmael/csv-phone-validator.git
 cd csv-phone-validator
 
 # Install dependencies

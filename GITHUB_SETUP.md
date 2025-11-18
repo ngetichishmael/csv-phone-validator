@@ -52,14 +52,14 @@ git push -u origin main
 
 4. Push your code:
 ```bash
-# Add remote (replace 'yourusername' with your GitHub username)
-git remote add origin https://github.com/yourusername/csv-phone-validator.git
+# Add remote
+git remote add origin https://github.com/ngetichishmael/csv-phone-validator.git
 
-# Rename branch to main if needed
-git branch -M main
+# Use your branch name (ish)
+git branch -M ish
 
 # Push code
-git push -u origin main
+git push -u origin ish
 ```
 
 ## Step 3: Configure Repository Settings
@@ -172,7 +172,7 @@ A production-ready web app for validating and cleaning CSV data with Kenya phone
 Built with Nuxt 3, TypeScript, and Tailwind CSS. Processes 5000+ rows in <2 seconds.
 
 🔗 Live Demo: https://csv-phone-validator.vercel.app
-💻 GitHub: https://github.com/yourusername/csv-phone-validator
+💻 GitHub: https://github.com/ngetichishmael/csv-phone-validator
 🏆 Winner: Peak Hackathon 2025
 
 Tech: Nuxt 3, Vue 3, TypeScript, Pinia, Tailwind CSS, PapaParse
