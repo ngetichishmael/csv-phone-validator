@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.1] - 2025-11-19
+
+### 🐛 Fixed
+- **Test Validation Import**: Corrected import path in `test-validation.ts` to use `app/utils/phoneFormatter` instead of `./utils/phoneFormatter` after Nuxt 4 directory structure migration
+- **CHANGELOG Dates**: Updated all version release dates from 2024 to 2025 for accuracy
+
+### 🔧 Improved
+- **TypeScript Support**: Added `@types/node` dependency for better TypeScript Node.js API support
+- **Documentation**: Enhanced CHANGELOG with comprehensive git history and detailed feature breakdowns
+
+### 📚 Documentation
+- Created detailed CHANGELOG following Keep a Changelog format
+- Preserved manual entries for pagination and balance analysis features
+- Added git commit history section with all project commits
+- Included project statistics, performance metrics, and dependencies list
+- Organized entries by categories: Added, Improved, Fixed, Documentation
+
+---
+
 ## [1.2.0] - 2025-11-18
 
 ### ✨ Added
@@ -366,7 +385,14 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 
 ## Git Commit History
 
+### 2025-11-19
+- `7594a66` - chore: add @types/node dependency for TypeScript support
+- `ce277d1` - fix: update import path in test-validation.ts
+
 ### 2025-11-18
+- `958df75` - fix: update CHANGELOG dates to 2025
+- `8a1286b` - docs: create comprehensive CHANGELOG with complete git history
+- `771c4dd` - feat: implement real-time balance analysis and pagination for data table
 - `fb8eb6f` - chore: remove outdated documentation files
 - `49ab7ff` - docs: add application screenshots to README
 - `0d105ca` - docs: update GitHub username to ngetichishmael
@@ -396,7 +422,7 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 
 ## Summary
 
-**Total Commits**: 22  
+**Total Commits**: 27  
 **Development Time**: ~3 days  
 **Lines of Code**: ~3000+  
 **Test Coverage**: 14/14 tests passing  
