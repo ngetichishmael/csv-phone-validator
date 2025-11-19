@@ -1,0 +1,13 @@
+[build]
+  command = "curl -fsSL https://bun.sh/install | bash && $HOME/.bun/bin/bun install && $HOME/.bun/bin/bun run build"
+  publish = ".output/public"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA redirect - all routes should serve index.html for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
