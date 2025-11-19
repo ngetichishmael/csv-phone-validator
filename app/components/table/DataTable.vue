@@ -244,22 +244,22 @@ const sortByPackage = () => {
           <UiButton
             variant="outline"
             size="sm"
-            class="h-9 flex items-center"
+            class="h-9 flex items-center justify-center"
             @click="showFilters = !showFilters"
           >
-            <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
-            <span>Filters</span>
-            <span v-if="statusFilter !== 'all' || telcoFilter.length > 0" class="ml-1 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">
+            <span class="whitespace-nowrap">Filters</span>
+            <span v-if="statusFilter !== 'all' || telcoFilter.length > 0" class="ml-1.5 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">
               {{ (statusFilter !== 'all' ? 1 : 0) + telcoFilter.length }}
             </span>
           </UiButton>
 
-          <div class="h-6 w-px bg-gray-300 self-center" />
+          <div class="h-6 w-px bg-gray-300" />
           
           <!-- Page Size -->
-          <div class="flex items-center gap-2 h-9">
+          <div class="flex items-center gap-2">
             <label class="text-sm text-gray-600 whitespace-nowrap">Rows:</label>
             <select
               v-model.number="pageSize"
@@ -272,27 +272,27 @@ const sortByPackage = () => {
             </select>
           </div>
           
-          <div class="h-6 w-px bg-gray-300 self-center" />
+          <div class="h-6 w-px bg-gray-300" />
           
           <UiButton
             variant="outline"
             size="sm"
-            class="h-9 flex items-center"
+            class="h-9 flex items-center justify-center"
             @click="sortByPackage"
           >
-            <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
             </svg>
-            <span>Sort by Bundle</span>
+            <span class="whitespace-nowrap">Sort by Bundle</span>
           </UiButton>
           
           <UiButton
             variant="outline"
             size="sm"
-            class="h-9"
+            class="h-9 flex items-center justify-center"
             @click="csvStore.clear()"
           >
-            Clear Data
+            <span class="whitespace-nowrap">Clear Data</span>
           </UiButton>
         </div>
       </div>
