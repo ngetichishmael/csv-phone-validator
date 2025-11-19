@@ -14,16 +14,20 @@ A production-ready web application that validates, cleans, and formats CSV data 
 ## ✨ Features
 
 ### Core Functionality
+
 - 📤 **CSV Upload**: Drag-and-drop or click to browse
 - ✅ **Smart Phone Validation**: Validates and formats Kenya mobile numbers to `+2547XXXXXXXX`
 - 🎨 **Visual Error Highlighting**: Color-coded rows (green=valid, red=invalid, yellow=duplicate)
 - ✏️ **Inline Editing**: Double-click phone numbers to fix errors in real-time
+- 📄 **Pagination**: Navigate through large datasets with configurable page size (25-500 rows)
 - 📊 **Sort by Bundle Size**: One-click sorting by package/bundle column
 - 💾 **Clean Data Export**: Download cleaned CSV with only valid rows
 
 ### Advanced Features
+
 - 🔍 **Duplicate Detection**: Automatically identifies duplicate phone numbers
 - 📈 **Real-time Statistics**: Live dashboard showing validation success rate
+- 💰 **Balance Analysis**: Check available units vs required units with visual warnings
 - 📱 **Telco Identification**: Detects Safaricom, Airtel, and Telkom numbers
 - 🔬 **Scientific Notation Support**: Handles Excel's scientific notation (e.g., `2.54708E+11`)
 - 🎯 **Smart Auto-Fix**: Handles leading zeros, missing prefixes, and various formats
@@ -31,6 +35,7 @@ A production-ready web application that validates, cleans, and formats CSV data 
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - [Bun](https://bun.sh) 1.0+ installed
 - Node.js 18+ (optional)
 
@@ -64,21 +69,21 @@ Visit **http://localhost:3000** and start cleaning your CSV files!
 
 The validator handles various input formats and standardizes them to `+2547XXXXXXXX`:
 
-| Input Format | Output | Status |
-|--------------|--------|--------|
-| `0722123456` | `+254722123456` | ✅ Valid |
-| `722123456` | `+254722123456` | ✅ Valid |
-| `2.54708E+11` | `+254708000000` | ✅ Valid (Excel) |
-| `+254 722 123 456` | `+254722123456` | ✅ Valid |
-| `0t2s431243` | - | ❌ Invalid (contains letters) |
-| `0622123456` | - | ❌ Invalid (wrong prefix) |
+| Input Format         | Output            | Status                        |
+| -------------------- | ----------------- | ----------------------------- |
+| `0722123456`       | `+254722123456` | ✅ Valid                      |
+| `722123456`        | `+254722123456` | ✅ Valid                      |
+| `2.54708E+11`      | `+254708000000` | ✅ Valid (Excel)              |
+| `+254 722 123 456` | `+254722123456` | ✅ Valid                      |
+| `0t2s431243`       | -                 | ❌ Invalid (contains letters) |
+| `0622123456`       | -                 | ❌ Invalid (wrong prefix)     |
 
 ### Supported Formats
 
-✅ With/without country code (+254, 254)  
-✅ With/without leading zero (0722...)  
-✅ Scientific notation (from Excel)  
-✅ Various separators (spaces, dashes)  
+✅ With/without country code (+254, 254)
+✅ With/without leading zero (0722...)
+✅ Scientific notation (from Excel)
+✅ Various separators (spaces, dashes)
 ✅ 7xx and 1xx prefixes (Kenya mobile)
 
 ### Validation Rules
@@ -167,31 +172,34 @@ bun run lint:fix
 ## 🚢 Deployment
 
 Deploy to:
+
 - [Vercel](https://vercel.com) (recommended)
 - [Netlify](https://netlify.com)
 - [Cloudflare Pages](https://pages.cloudflare.com)
 - Any static hosting
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
-
 ## 📸 Screenshots
 
 ### Landing Page
+
 Clean and intuitive upload interface with drag-and-drop support.
 
 ![Landing Page](public/images/landing_page_before_upload.png)
 
 ### During Upload
+
 Real-time processing with visual feedback.
 
 ![Upload Progress](public/images/during_upload.png)
 
 ### Results Dashboard
+
 Color-coded validation results with inline editing, statistics, and export controls.
 
 ![Validation Results](public/images/result.png)
 
 **Features shown:**
+
 - ✅ Green rows: Valid phone numbers with telco identification
 - ❌ Red rows: Invalid entries with error messages
 - 🟡 Yellow rows: Duplicate phone numbers

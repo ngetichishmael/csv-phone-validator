@@ -39,3 +39,10 @@ export interface CsvData {
   file?: UploadedFile
 }
 
+export interface BalanceInfo {
+  availableUnits: number
+  requiredUnits: number
+  isInsufficient: boolean
+  packageColumn?: string
+}
+

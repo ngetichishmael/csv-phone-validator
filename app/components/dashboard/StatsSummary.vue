@@ -1,10 +1,28 @@
 <script setup lang="ts">
 const csvStore = useCsvStore()
 
+const showBalanceInput = ref(false)
+const availableBalance = ref('')
+
 const formatFileSize = (bytes: number): string => {
   if (bytes < 1024) return `${bytes} B`
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
+}
+
+const formatNumber = (num: number): string => {
+  return num.toLocaleString()
+}
+
+const handleBalanceInput = () => {
+  const units = parseFloat(availableBalance.value)
+  if (!isNaN(units) && units >= 0) {
+    csvStore.setAvailableBalance(units)
+  }
+}
+
+const toggleBalanceInput = () => {
+  showBalanceInput.value = !showBalanceInput.value
 }
 </script>
 
@@ -94,6 +112,87 @@ const formatFileSize = (bytes: number): string => {
           All records are valid! Your data is ready to export.
         </div>
       </UiAlert>
+    </div>
+    
+    <!-- Balance Check Section -->
+    <div class="mt-4 pt-4 border-t border-gray-200">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-sm font-semibold text-gray-900">Balance Analysis</h3>
+        <button
+          class="text-xs text-blue-600 hover:text-blue-700 font-medium"
+          @click="toggleBalanceInput"
+        >
+          {{ showBalanceInput ? 'Hide' : 'Check Balance' }}
+        </button>
+      </div>
+      
+      <!-- Balance Input -->
+      <div v-if="showBalanceInput" class="space-y-3">
+        <div class="flex items-center space-x-2">
+          <input
+            v-model="availableBalance"
+            type="number"
+            min="0"
+            step="1"
+            placeholder="Enter available units"
+            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            @input="handleBalanceInput"
+          >
+          <UiButton
+            variant="primary"
+            size="sm"
+            @click="handleBalanceInput"
+          >
+            Check
+          </UiButton>
+        </div>
+        
+        <!-- Balance Display -->
+        <div class="bg-gray-50 p-4 rounded-lg space-y-2">
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-gray-600">Available Units:</span>
+            <span class="font-semibold text-gray-900">
+              {{ formatNumber(csvStore.balance.availableUnits) }}
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-gray-600">Required Units:</span>
+            <span class="font-semibold text-gray-900">
+              {{ formatNumber(csvStore.balance.requiredUnits) }}
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-sm pt-2 border-t border-gray-200">
+            <span class="text-gray-600">Remaining:</span>
+            <span 
+              class="font-semibold"
+              :class="csvStore.balance.isInsufficient ? 'text-red-600' : 'text-green-600'"
+            >
+              {{ formatNumber(csvStore.balance.availableUnits - csvStore.balance.requiredUnits) }}
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Insufficient Balance Warning -->
+      <div v-if="csvStore.balance.isInsufficient" class="mt-3">
+        <UiAlert variant="error">
+          <div class="text-sm">
+            <strong>⚠️ Insufficient Balance!</strong>
+            <br>
+            You need <strong>{{ formatNumber(csvStore.balance.requiredUnits - csvStore.balance.availableUnits) }}</strong> 
+            more units to complete this upload.
+          </div>
+        </UiAlert>
+      </div>
+      
+      <!-- Sufficient Balance Message -->
+      <div v-if="!csvStore.balance.isInsufficient && csvStore.balance.availableUnits > 0 && csvStore.balance.requiredUnits > 0" class="mt-3">
+        <UiAlert variant="success">
+          <div class="text-sm">
+            ✓ Sufficient balance available for upload!
+          </div>
+        </UiAlert>
+      </div>
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { CsvRow, StatsSummary, UploadedFile } from '~/types'
+import type { CsvRow, StatsSummary, UploadedFile, BalanceInfo } from '~/types'
 
 export const useCsvStore = defineStore('csv', {
   state: () => ({
@@ -7,8 +7,15 @@ export const useCsvStore = defineStore('csv', {
     headers: [] as string[],
     file: null as UploadedFile | null,
     phoneColumn: 'mobile' as string,
+    packageColumn: 'package' as string,
     isLoading: false,
-    error: null as string | null
+    error: null as string | null,
+    balance: {
+      availableUnits: 0,
+      requiredUnits: 0,
+      isInsufficient: false,
+      packageColumn: 'package'
+    } as BalanceInfo
   }),
   
   getters: {
@@ -87,6 +94,9 @@ export const useCsvStore = defineStore('csv', {
           
           // Check for duplicates
           this.checkDuplicates()
+          
+          // Calculate required units
+          this.calculateRequiredUnits()
         }
       } catch (err: unknown) {
         this.error = (err as Error).message || 'Failed to process file'
@@ -164,17 +174,23 @@ export const useCsvStore = defineStore('csv', {
         const aVal = a[column]
         const bVal = b[column]
         
+        // Handle undefined or null values
+        if (aVal === undefined || aVal === null) return 1
+        if (bVal === undefined || bVal === null) return -1
+        
         // Handle numeric sorting
         if (typeof aVal === 'number' && typeof bVal === 'number') {
           return ascending ? aVal - bVal : bVal - aVal
         }
         
-        // Try to convert to numbers for sorting
-        const aNum = parseFloat(aVal)
-        const bNum = parseFloat(bVal)
-        
-        if (!isNaN(aNum) && !isNaN(bNum)) {
-          return ascending ? aNum - bNum : bNum - aNum
+        // Try to convert to numbers for sorting (only for string/number types)
+        if (typeof aVal !== 'object' && typeof bVal !== 'object') {
+          const aNum = parseFloat(String(aVal))
+          const bNum = parseFloat(String(bVal))
+          
+          if (!isNaN(aNum) && !isNaN(bNum)) {
+            return ascending ? aNum - bNum : bNum - aNum
+          }
         }
         
         // String sorting
@@ -197,6 +213,53 @@ export const useCsvStore = defineStore('csv', {
       this.headers = []
       this.file = null
       this.error = null
+    },
+    
+    /**
+     * Calculate required units from data
+     */
+    calculateRequiredUnits() {
+      let total = 0
+      
+      // Find package column
+      const packageCol = this.headers.find(h => 
+        h.toLowerCase().includes('package') || 
+        h.toLowerCase().includes('bundle') ||
+        h.toLowerCase().includes('amount')
+      )
+      
+      if (packageCol) {
+        this.packageColumn = packageCol
+        this.balance.packageColumn = packageCol
+        
+        // Sum up valid rows only
+        this.validRows.forEach(row => {
+          const value = row[packageCol]
+          const numValue = typeof value === 'number' ? value : parseFloat(String(value))
+          if (!isNaN(numValue)) {
+            total += numValue
+          }
+        })
+      }
+      
+      this.balance.requiredUnits = total
+      this.checkBalanceSufficiency()
+    },
+    
+    /**
+     * Set available balance
+     */
+    setAvailableBalance(units: number) {
+      this.balance.availableUnits = units
+      this.checkBalanceSufficiency()
+    },
+    
+    /**
+     * Check if balance is sufficient
+     */
+    checkBalanceSufficiency() {
+      this.balance.isInsufficient = this.balance.availableUnits > 0 && 
+                                     this.balance.requiredUnits > this.balance.availableUnits
     },
     
     /**
