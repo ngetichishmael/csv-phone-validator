@@ -386,6 +386,10 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 ## Git Commit History
 
 ### 2025-11-19
+- `452d646` - refactor: improve button alignment and spacing in DataTable component for better UI consistency
+- `bbf815b` - refactor: update UI components for export and dashboard, enhance filtering options, and improve data handling
+- `2d7635c` - feat: enhance export, filtering, and UI design
+- `d20e2ea` - docs: update CHANGELOG with v1.2.1 release notes
 - `7594a66` - chore: add @types/node dependency for TypeScript support
 - `ce277d1` - fix: update import path in test-validation.ts
 
@@ -422,7 +426,7 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 
 ## Summary
 
-**Total Commits**: 27  
+**Total Commits**: 31  
 **Development Time**: ~3 days  
 **Lines of Code**: ~3000+  
 **Test Coverage**: 14/14 tests passing  

@@ -273,7 +273,7 @@ const formatIcons = {
             <label class="block text-sm font-medium text-gray-700">Select Columns (Optional)</label>
             <div class="flex gap-2">
               <button
-                class="text-xs px-2 py-1 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded font-medium transition-colors"
+                class="text-xs px-2 py-1 bg-primary-50 text-primary-600 hover:bg-primary-100 rounded font-medium transition-colors"
                 @click="selectAllColumns"
               >
                 Select All

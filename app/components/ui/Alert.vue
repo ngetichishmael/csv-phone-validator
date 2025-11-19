@@ -14,7 +14,7 @@ const alertClasses = computed(() => {
     success: 'bg-green-50 border-green-200 text-green-800',
     error: 'bg-red-50 border-red-200 text-red-800',
     warning: 'bg-yellow-50 border-yellow-200 text-yellow-800',
-    info: 'bg-blue-50 border-blue-200 text-blue-800'
+    info: 'bg-primary-50 border-primary-200 text-primary-800'
   }
   
   return [base, variants[props.variant]].join(' ')
@@ -63,7 +63,7 @@ const alertClasses = computed(() => {
         </svg>
         <svg
           v-else
-          class="h-5 w-5 text-blue-600"
+          class="h-5 w-5 text-primary-600"
           fill="currentColor"
           viewBox="0 0 20 20"
         >

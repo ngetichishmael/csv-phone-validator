@@ -67,7 +67,7 @@ const processFile = async (file: File) => {
     <div
       class="border-2 border-dashed rounded-lg p-12 text-center cursor-pointer transition-all duration-200"
       :class="{
-        'border-blue-500 bg-blue-50': isDragging,
+        'border-primary-500 bg-primary-50': isDragging,
         'border-gray-300 hover:border-gray-400 bg-white': !isDragging
       }"
       @drop.prevent="handleDrop"
@@ -79,7 +79,7 @@ const processFile = async (file: File) => {
         <!-- Upload Icon -->
         <svg
           class="w-16 h-16 text-gray-400"
-          :class="{ 'text-blue-500': isDragging }"
+          :class="{ 'text-primary-500': isDragging }"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -127,11 +127,11 @@ const processFile = async (file: File) => {
     <!-- Loading state -->
     <div
       v-if="isUploading"
-      class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg"
+      class="mt-4 p-4 bg-primary-50 border border-primary-200 rounded-lg"
     >
       <div class="flex items-center space-x-3">
-        <div class="animate-spin h-5 w-5 border-2 border-blue-500 border-t-transparent rounded-full"/>
-        <span class="text-sm text-blue-700">Processing your CSV file...</span>
+        <div class="animate-spin h-5 w-5 border-2 border-primary-500 border-t-transparent rounded-full"/>
+        <span class="text-sm text-primary-700">Processing your CSV file...</span>
       </div>
     </div>
   </div>

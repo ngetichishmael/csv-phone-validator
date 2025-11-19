@@ -12,13 +12,20 @@ const handleFileUpload = (file: File) => {
     <header class="bg-white border-b border-gray-200 shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex items-center justify-between">
-          <div>
-            <h1 class="text-3xl font-bold text-gray-900">
-              CSV Data Cleaner
-            </h1>
-            <p class="text-sm text-gray-500 mt-1">
-              Validate, clean, and format your CSV data with ease
-            </p>
+          <div class="flex items-center gap-4">
+            <img 
+              src="/logos/logo_1.jpeg" 
+              alt="CSV Cleaner Logo" 
+              class="h-16 w-auto object-contain"
+            >
+            <div>
+              <h1 class="text-3xl font-bold text-gray-900">
+                CSV Data Cleaner
+              </h1>
+              <p class="text-sm text-gray-500 mt-1">
+                Validate, clean, and format your CSV data with ease
+              </p>
+            </div>
           </div>
           <div class="text-right">
             <p class="text-sm text-gray-600">by <span class="font-semibold">Ish</span></p>

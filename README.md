@@ -207,6 +207,18 @@ Color-coded validation results with inline editing, statistics, and export contr
 - ✏️ Inline editing (double-click to fix)
 - 📥 Export controls with preview
 
+### Statistics Dashboard
+
+Comprehensive real-time statistics showing validation metrics, balance analysis, and data insights.
+
+![Statistics Dashboard](public/images/statistics.png)
+
+### Download and Filter Options
+
+Advanced filtering and export controls for downloading cleaned data with customizable options.
+
+![Download and Filter Options](public/images/download_and_filter_options.png)
+
 ## 🎯 Use Cases
 
 - 📱 **Bulk SMS Services**: Validate phone numbers before sending
