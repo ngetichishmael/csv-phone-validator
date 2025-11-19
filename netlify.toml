@@ -1,5 +1,5 @@
 [build]
-  command = "curl -fsSL https://bun.sh/install | bash && $HOME/.bun/bin/bun install && $HOME/.bun/bin/bun run build"
+  command = "curl -fsSL https://bun.sh/install | bash && $HOME/.bun/bin/bun install && $HOME/.bun/bin/bun run generate"
   publish = ".output/public"
 
 [build.environment]
