@@ -23,5 +23,6 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Smart CSV cleaning tool for phone number validation' }
       ]
     }
-  }
+  },
+
 })
