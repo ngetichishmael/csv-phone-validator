@@ -11,6 +11,8 @@ A production-ready web application that validates, cleans, and formats CSV data 
 
 ![CSV Phone Validator](https://img.shields.io/badge/Status-Production%20Ready-success)
 
+🌐 **Live Demo**: [https://csv-phone-validator.netlify.app/](https://csv-phone-validator.netlify.app/)
+
 ## ✨ Features
 
 ### Core Functionality
@@ -171,10 +173,12 @@ bun run lint:fix
 
 ## 🚢 Deployment
 
+**Live Site**: [https://csv-phone-validator.netlify.app/](https://csv-phone-validator.netlify.app/)
+
 Deploy to:
 
-- [Vercel](https://vercel.com) (recommended)
-- [Netlify](https://netlify.com)
+- [Netlify](https://netlify.com) (currently deployed)
+- [Vercel](https://vercel.com)
 - [Cloudflare Pages](https://pages.cloudflare.com)
 - Any static hosting
 
