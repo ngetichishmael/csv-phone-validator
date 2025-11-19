@@ -3,6 +3,8 @@ export interface CsvRow {
   _id?: number
   _status?: 'pending' | 'valid' | 'invalid' | 'duplicate'
   _errors?: ValidationError[]
+  _telco?: 'Safaricom' | 'Airtel' | 'Telkom' | 'Unknown'
+  _duplicateCount?: number
 }
 
 export interface ValidationResult {

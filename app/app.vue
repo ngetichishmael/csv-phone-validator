@@ -38,12 +38,10 @@ const handleFileUpload = (file: File) => {
       <div v-else class="space-y-6">
         <!-- Stats Summary -->
         <DashboardStatsSummary />
-        
-        <!-- Data Table -->
-        <TableDataTable />
-        
         <!-- Export Controls -->
         <ExportControls />
+        <!-- Data Table -->
+        <TableDataTable />
       </div>
     </main>
     

@@ -263,7 +263,7 @@ export const useCsvStore = defineStore('csv', {
     },
     
     /**
-     * Export data
+     * Export data (legacy method for backward compatibility)
      */
     exportData(onlyValid: boolean = true) {
       const exporter = useDataExport()
@@ -272,6 +272,21 @@ export const useCsvStore = defineStore('csv', {
         'cleaned-data.csv'
       
       return exporter.exportToCsv(this.rows, filename, onlyValid)
+    }
+    
+    /**
+     * Export data with advanced options
+     */
+    async exportDataAdvanced(options: Parameters<ReturnType<typeof useDataExport>['exportData']>[1] = {} as ExportOptions) {
+      const exporter = useDataExport()
+      const defaultOptions = {
+        customFilename: this.file ? 
+          `cleaned-${this.file.name.replace(/\.[^/.]+$/, '')}` : 
+          'cleaned-data',
+        ...options
+      }
+      
+      return await exporter.exportData(this.rows, defaultOptions)
     }
   }
 })
