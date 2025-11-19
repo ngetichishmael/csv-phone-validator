@@ -233,7 +233,7 @@ const sortByPackage = () => {
               v-model="searchQuery"
               type="text"
               placeholder="Search..."
-              class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent h-9"
             >
             <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -244,25 +244,26 @@ const sortByPackage = () => {
           <UiButton
             variant="outline"
             size="sm"
+            class="h-9 flex items-center"
             @click="showFilters = !showFilters"
           >
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
-            Filters
-            <span v-if="statusFilter !== 'all' || telcoFilter.length > 0" class="ml-1 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            <span>Filters</span>
+            <span v-if="statusFilter !== 'all' || telcoFilter.length > 0" class="ml-1 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">
               {{ (statusFilter !== 'all' ? 1 : 0) + telcoFilter.length }}
             </span>
           </UiButton>
 
-          <div class="h-6 w-px bg-gray-300" />
+          <div class="h-6 w-px bg-gray-300 self-center" />
           
           <!-- Page Size -->
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 h-9">
             <label class="text-sm text-gray-600 whitespace-nowrap">Rows:</label>
             <select
               v-model.number="pageSize"
-              class="px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent h-9"
               @change="changePageSize"
             >
               <option v-for="size in pageSizeOptions" :key="size" :value="size">
@@ -271,22 +272,24 @@ const sortByPackage = () => {
             </select>
           </div>
           
-          <div class="h-6 w-px bg-gray-300" />
+          <div class="h-6 w-px bg-gray-300 self-center" />
           
           <UiButton
             variant="outline"
             size="sm"
+            class="h-9 flex items-center"
             @click="sortByPackage"
           >
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
             </svg>
-            Sort by Bundle
+            <span>Sort by Bundle</span>
           </UiButton>
           
           <UiButton
             variant="outline"
             size="sm"
+            class="h-9"
             @click="csvStore.clear()"
           >
             Clear Data
@@ -352,7 +355,7 @@ const sortByPackage = () => {
           {{ selectedRows.size }} row(s) selected
         </span>
         <UiButton
-          variant="error"
+          variant="danger"
           size="sm"
           @click="deleteSelected"
         >
@@ -376,7 +379,7 @@ const sortByPackage = () => {
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50 sticky top-0 z-10">
             <tr>
-              <th class="px-4 py-3 text-left">
+              <th class="px-4 py-3 text-left w-12">
                 <input
                   type="checkbox"
                   :checked="selectedRows.size === paginatedRows.length && paginatedRows.length > 0"
@@ -385,17 +388,17 @@ const sortByPackage = () => {
                   @change="selectAll"
                 >
               </th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
                 Status
               </th>
               <th
                 v-for="header in csvStore.headers"
                 :key="header"
-                class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[120px]"
               >
                 {{ header }}
               </th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-20">
                 Actions
               </th>
             </tr>
@@ -405,10 +408,10 @@ const sortByPackage = () => {
               v-for="row in paginatedRows"
               :key="row._id"
               :class="getRowClass(row)"
-              class="transition-colors duration-150"
+              class="transition-colors duration-150 hover:bg-opacity-80"
             >
               <!-- Checkbox Column -->
-              <td class="px-4 py-3 whitespace-nowrap">
+              <td class="px-4 py-3">
                 <input
                   type="checkbox"
                   :checked="selectedRows.has(row._id!)"
@@ -418,9 +421,9 @@ const sortByPackage = () => {
               </td>
 
               <!-- Status Column -->
-              <td class="px-4 py-3 whitespace-nowrap">
+              <td class="px-4 py-3">
                 <UiBadge :variant="getStatusVariant(row._status)">
-                  {{ row._status }}
+                  {{ row._status || 'pending' }}
                 </UiBadge>
               </td>
               
@@ -428,30 +431,30 @@ const sortByPackage = () => {
               <td
                 v-for="header in csvStore.headers"
                 :key="header"
-                class="px-4 py-3 whitespace-nowrap text-sm"
+                class="px-4 py-3 text-sm"
               >
                 <!-- Editable cell for phone column -->
-                <div v-if="header === csvStore.phoneColumn">
+                <div v-if="header === csvStore.phoneColumn" class="min-w-[150px]">
                   <input
                     v-if="editingRow === row._id"
                     v-model="row[header]"
-                    class="w-full px-2 py-1 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full px-2 py-1 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     autofocus
                     @blur="saveEdit(row)"
                     @keyup.enter="saveEdit(row)"
                   >
                   <div
                     v-else
-                    class="cursor-pointer hover:bg-gray-50 px-2 py-1 rounded"
+                    class="cursor-pointer hover:bg-gray-50 px-2 py-1 rounded -mx-2 -my-1"
                     :class="{ 'text-red-600 font-medium': row._status === 'invalid' }"
                     @dblclick="startEdit(row._id!)"
                   >
-                    {{ row[header] }}
+                    <span class="break-words">{{ row[header] || '-' }}</span>
                     
                     <!-- Telco indicator -->
                     <span
                       v-if="row._telco && row._status === 'valid'"
-                      class="ml-2 text-xs font-medium"
+                      class="ml-2 text-xs font-medium whitespace-nowrap"
                       :class="{
                         'text-green-600': row._telco === 'Safaricom',
                         'text-red-600': row._telco === 'Airtel',
@@ -465,22 +468,22 @@ const sortByPackage = () => {
                   <!-- Error message -->
                   <div
                     v-if="row._errors && row._errors.length > 0"
-                    class="text-xs text-red-600 mt-1"
+                    class="text-xs text-red-600 mt-1 break-words"
                   >
-                    {{ row._errors[0].message }}
+                    {{ row._errors[0]?.message }}
                   </div>
                 </div>
                 
                 <!-- Regular cell -->
-                <div v-else class="text-gray-900">
-                  {{ row[header] }}
+                <div v-else class="text-gray-900 break-words min-w-[100px]">
+                  {{ row[header] || '-' }}
                 </div>
               </td>
               
               <!-- Actions Column -->
-              <td class="px-4 py-3 whitespace-nowrap text-sm">
+              <td class="px-4 py-3">
                 <button
-                  class="text-red-600 hover:text-red-800 transition-colors p-1 rounded hover:bg-red-50"
+                  class="text-red-600 hover:text-red-800 transition-colors p-1 rounded hover:bg-red-50 inline-flex items-center justify-center"
                   title="Delete row"
                   @click="deleteRow(row._id!)"
                 >
@@ -492,6 +495,19 @@ const sortByPackage = () => {
             </tr>
           </tbody>
         </table>
+      </div>
+      
+      <!-- Empty State -->
+      <div v-if="paginatedRows.length === 0" class="text-center py-12">
+        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <h3 class="mt-2 text-sm font-medium text-gray-900">No data to display</h3>
+        <p class="mt-1 text-sm text-gray-500">
+          {{ filteredRows.length === 0 && csvStore.rows.length > 0 
+            ? 'No rows match your current filters' 
+            : 'Upload a CSV file to get started' }}
+        </p>
       </div>
     </div>
     

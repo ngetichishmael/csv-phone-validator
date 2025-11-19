@@ -31,8 +31,8 @@ export const useDataExport = () => {
       filtered = filtered.filter(row => row._status === 'invalid')
     } else if (options.filter === 'duplicate') {
       filtered = filtered.filter(row => row._status === 'duplicate')
-    }
-
+      }
+      
     // Apply telco filter
     if (options.telcoFilter && options.telcoFilter.length > 0) {
       filtered = filtered.filter(row => {
@@ -50,7 +50,7 @@ export const useDataExport = () => {
   const cleanRowData = (rows: CsvRow[], options: ExportOptions): Record<string, any>[] => {
     return rows.map(row => {
       // Remove internal fields
-      const { _id, _status, _errors, _telco, _duplicateCount, ...cleanRow } = row
+        const { _id, _status, _errors, _telco, _duplicateCount, ...cleanRow } = row
 
       // If specific columns are selected, only include those
       if (options.selectedColumns && options.selectedColumns.length > 0) {
@@ -131,7 +131,7 @@ export const useDataExport = () => {
         isExporting.value = false
         exportProgress.value = 0
       }, 500)
-
+      
       return true
     } catch (error) {
       console.error('Export failed:', error)
@@ -156,7 +156,7 @@ export const useDataExport = () => {
       includeHeaders: true
     })
   }
-
+  
   /**
    * Get export preview (first few rows)
    */
@@ -168,7 +168,7 @@ export const useDataExport = () => {
     const filteredRows = filterRows(rows, options)
     return filteredRows.slice(0, limit)
   }
-
+  
   /**
    * Get export statistics
    */
@@ -182,7 +182,7 @@ export const useDataExport = () => {
       format: options.format || 'csv'
     }
   }
-
+  
   return {
     exportData,
     exportToCsv, // Legacy support

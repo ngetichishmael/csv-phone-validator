@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type { CsvRow, StatsSummary, UploadedFile, BalanceInfo } from '~/types'
+import type { ExportOptions } from '~/composables/useDataExport'
 
 export const useCsvStore = defineStore('csv', {
   state: () => ({
@@ -272,14 +273,14 @@ export const useCsvStore = defineStore('csv', {
         'cleaned-data.csv'
       
       return exporter.exportToCsv(this.rows, filename, onlyValid)
-    }
+    },
     
     /**
      * Export data with advanced options
      */
-    async exportDataAdvanced(options: Parameters<ReturnType<typeof useDataExport>['exportData']>[1] = {} as ExportOptions) {
+    async exportDataAdvanced(options: ExportOptions = {}) {
       const exporter = useDataExport()
-      const defaultOptions = {
+      const defaultOptions: ExportOptions = {
         customFilename: this.file ? 
           `cleaned-${this.file.name.replace(/\.[^/.]+$/, '')}` : 
           'cleaned-data',
