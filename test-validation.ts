@@ -3,7 +3,7 @@
  * Run with: bun run test-validation.ts
  */
 
-import { PhoneNumberFormatter } from './utils/phoneFormatter'
+import { PhoneNumberFormatter } from './app/utils/phoneFormatter'
 
 console.log('🧪 Testing Phone Number Validation\n')
 console.log('=' .repeat(60))
