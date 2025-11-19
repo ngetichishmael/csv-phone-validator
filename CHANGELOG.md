@@ -26,6 +26,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.2] - 2025-11-19
+
+### 🚀 Added
+- **Netlify Deployment**: Added complete Netlify support with `netlify.toml` configuration
+- **Live Demo**: Application now hosted at [https://csv-phone-validator.netlify.app/](https://csv-phone-validator.netlify.app/)
+- **Deployment Documentation**: Updated README with live demo link and deployment information
+
+### 🔧 Improved
+- **Build Configuration**: Configured Netlify build to use `npm install && npm run generate` for static site generation
+- **Publish Directory**: Set publish directory to `dist` for Netlify deployment compatibility
+- **Node Version**: Configured Node.js version 20 in Netlify environment
+- **SPA Routing**: Added redirect rules for client-side routing in SPA mode
+
+### 🐛 Fixed
+- **Build Command**: Updated Netlify build command to use `npm run generate` instead of `npm run build` for proper static site generation
+- **Publish Path**: Corrected publish directory from `.output/public` to `dist` for Nuxt 4 compatibility
+- **DataTable Alignment**: Fixed alignment issues in DataTable component for improved user experience
+
+### 📚 Documentation
+- **README Updates**: Added live demo link prominently at the top of README
+- **Deployment Section**: Enhanced deployment section with live site URL and current hosting platform
+- **Screenshots**: Added missing screenshots (statistics and download/filter options) to README
+
+---
+
 ## [1.2.0] - 2025-11-18
 
 ### ✨ Added
@@ -386,6 +411,12 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 ## Git Commit History
 
 ### 2025-11-19
+- `56a848a` - docs: add live demo link to README and update deployment section for clarity
+- `0a26538` - fix: change publish directory in netlify.toml from .output/public to dist and add newline in nuxt.config.ts
+- `ba8e8a3` - fix: update build command in netlify.toml to use npm for installation and generation
+- `e46f1fc` - fix: update build command in netlify.toml to use 'generate' instead of 'build'
+- `af30b45` - fix: correct alignment issues in DataTable component for improved user experience
+- `baef7a8` - docs: add missing screenshots (statistics and download/filter options) to README
 - `452d646` - refactor: improve button alignment and spacing in DataTable component for better UI consistency
 - `bbf815b` - refactor: update UI components for export and dashboard, enhance filtering options, and improve data handling
 - `2d7635c` - feat: enhance export, filtering, and UI design
@@ -426,7 +457,7 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 
 ## Summary
 
-**Total Commits**: 31  
+**Total Commits**: 37  
 **Development Time**: ~3 days  
 **Lines of Code**: ~3000+  
 **Test Coverage**: 14/14 tests passing  
@@ -434,6 +465,7 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 **Components**: 11  
 **Composables**: 3  
 **Store Modules**: 1  
+**Live Site**: [https://csv-phone-validator.netlify.app/](https://csv-phone-validator.netlify.app/)
 
 **Repository**: https://github.com/ngetichishmael/csv-phone-validator  
 **Author**: Ish ([@ngetichishmael](https://github.com/ngetichishmael))  
@@ -442,4 +474,4 @@ The first production-ready version of CSV Phone Validator, built for Peak Hackat
 
 ---
 
-**Status**: 🚀 Production Ready | ✅ All Tests Passing | 📚 Fully Documented
+**Status**: 🚀 Production Ready | ✅ All Tests Passing | 📚 Fully Documented | 🌐 Live on Netlify
